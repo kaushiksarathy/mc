@@ -20,14 +20,16 @@ Ondemand is based on the quantity of milk ordered.
 
 Expectation
 1. Users should be able to see list of milk products available
+1.1 View all the subscriptions available.
+        
 2. Users should be able to order milk in both formats :
     1. Subscription based :
         Taking the month, quarter and year of subscription for a particular milk product.
     2. Ondemand based :
-        ordering of milk should take the date of delivery.
+        Ordering of milk should take the date of delivery.
         Not more than 100 such requests should be entertained accross milk product.
 3. Users should be able to sort milk products by price.
-4. Users should be able to see their milk product subscription.
+4. Users should be able to see their milk product subscription and ondemand orders.
 5. Admin view :
     1. All subscriptions for particular month or quarter or year.
     2. All on demand orders for a day or period.
