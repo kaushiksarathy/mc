@@ -25,21 +25,17 @@ public class SubscriptionDAO {
         List<MilkProduct> milkProducts = milkProductDAO.getMilkProducts(null);
         for (MilkProduct milkProduct : milkProducts) {
             String id = milkProduct.getId();
-            Subscription qSubscription = new Subscription(QUARTERLY, id, milkProduct.getIndividualPacketPrice() * QUARTERLY.getNumberOfDays());
-            Subscription mSubscription = new Subscription(MONTHLY, id, milkProduct.getIndividualPacketPrice() * MONTHLY.getNumberOfDays());
+            Subscription qSubscription = new Subscription(QUARTERLY, id);
+            Subscription mSubscription = new Subscription(MONTHLY, id);
             List<Subscription> subscriptions = new ArrayList<>();
             subscriptions.add(qSubscription);
             subscriptions.add(mSubscription);
             subscriptionMap.put(id, subscriptions);
             if (Integer.valueOf(id) % 3 == 0) {
-                Subscription ySubscription = new Subscription(YEARLY, id, milkProduct.getIndividualPacketPrice() * YEARLY.getNumberOfDays());
+                Subscription ySubscription = new Subscription(YEARLY, id);
                 subscriptionMap.getOrDefault(id, new ArrayList<>()).add(ySubscription);
             }
         }
-    }
-
-    public List<Subscription> getSubscription(String milkProductId) {
-        return subscriptionMap.getOrDefault(milkProductId, Collections.emptyList());
     }
 
     public List<Subscription> getAllSubscription() {

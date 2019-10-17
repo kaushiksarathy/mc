@@ -6,6 +6,7 @@ import dao.SubscriptionDAO;
 import dao.UserDAO;
 import manager.AdminManager;
 import manager.CustomerManager;
+import manager.DefaultPricingStrategy;
 import manager.request_model.SubscriptionRequest;
 import model.SubscriptionType;
 import model.User;
@@ -44,7 +45,7 @@ public class MilkDeliveryService {
         AdminManager adminManager = new AdminManager(ordersDAO);
         MilkProductDAO milkProductDAO = new MilkProductDAO();
         SubscriptionDAO subscriptionDAO = new SubscriptionDAO(milkProductDAO);
-        CustomerManager customerManager = new CustomerManager(milkProductDAO, ordersDAO, subscriptionDAO);
+        CustomerManager customerManager = new CustomerManager(milkProductDAO, ordersDAO, subscriptionDAO, new DefaultPricingStrategy(), 2);
         MilkDeliveryService milkDeliveryService = new MilkDeliveryService(adminManager, customerManager, userDAO);
 
         System.out.println("Enter Your user Id : ");
@@ -79,25 +80,13 @@ public class MilkDeliveryService {
         int returnCode = 0;
         switch (option) {
             case 1:
-                System.out.println("Give the date for orders in dd/mm/yyyy format");
-
-                String dateString = scanner.nextLine();
-                try {
-                    Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dateString);
-                    System.out.println(adminManager.getOnDemandOrder(date));
-                } catch (ParseException e) {
-                    throw new Exception("Internal Error ", e);
-                }
-
-                break;
-            case 2:
                 System.out.println("Give the type of subscription");
 
                 String typeString = scanner.nextLine();
                 SubscriptionType subscriptionType = SubscriptionType.valueOf(typeString);
                 System.out.println(adminManager.getSubscriptions(subscriptionType));
                 break;
-            case 3:
+            case 2:
                 returnCode = 1;
                 break;
             default:
@@ -106,7 +95,7 @@ public class MilkDeliveryService {
         return returnCode;
     }
 
-    public int handleCustomerMenu(String userId, Scanner scanner) {
+    public int handleCustomerMenu(String userId, Scanner scanner)  {
         int option = Integer.valueOf(scanner.nextLine());
         int returnCode = 0;
         switch (option) {
@@ -124,7 +113,11 @@ public class MilkDeliveryService {
                 System.out.println("Input the subscription type : ");
                 String typeString = scanner.nextLine();
                 SubscriptionType subscriptionType = SubscriptionType.valueOf(typeString);
-                customerManager.subscribe(new SubscriptionRequest(userId, productId, subscriptionType));
+                try {
+                    System.out.println(customerManager.subscribe(new SubscriptionRequest(userId, productId, subscriptionType)));
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
                 break;
             case 5:
                 System.out.println(customerManager.getAllMilkProducts("price"));

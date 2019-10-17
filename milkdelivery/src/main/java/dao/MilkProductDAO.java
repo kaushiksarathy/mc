@@ -32,5 +32,9 @@ public class MilkProductDAO {
         else return Collections.emptyList();
     }
 
+    public MilkProduct getMilkProduct(String id) {
+       return milkProducts.stream().filter(milkProduct -> milkProduct.getId().equals(id)).findFirst().get();
+    }
+
 
 }

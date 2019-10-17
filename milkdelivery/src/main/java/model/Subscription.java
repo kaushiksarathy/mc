@@ -6,7 +6,6 @@ import lombok.ToString;
 public class Subscription {
     private SubscriptionType subscriptionType;
     private String milkProductId;
-    private Double price;
 
     public SubscriptionType getSubscriptionType() {
         return subscriptionType;
@@ -16,16 +15,10 @@ public class Subscription {
         return milkProductId;
     }
 
-    public Double getPrice() {
-        return price;
-    }
 
-
-
-    public Subscription(SubscriptionType subscriptionType, String milkProductId, Double price) {
+    public Subscription(SubscriptionType subscriptionType, String milkProductId) {
         this.subscriptionType = subscriptionType;
         this.milkProductId = milkProductId;
-        this.price = price;
     }
 
 

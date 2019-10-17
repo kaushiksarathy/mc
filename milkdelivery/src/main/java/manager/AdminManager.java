@@ -2,6 +2,7 @@ package manager;
 
 import dao.OrdersDAO;
 import model.Order;
+import model.SubscriptionOrder;
 import model.SubscriptionType;
 
 import java.util.Date;
@@ -14,11 +15,8 @@ public class AdminManager {
         this.ordersDAO = ordersDAO;
     }
 
-    public List<Order> getOnDemandOrder(Date date) {
-        return ordersDAO.getOndemandOrders(date);
-    }
 
-    public List<Order> getSubscriptions(SubscriptionType subscriptionType) {
+    public List<SubscriptionOrder> getSubscriptions(SubscriptionType subscriptionType) {
         return ordersDAO.getSubscriptionOrders(subscriptionType);
     }
 }
