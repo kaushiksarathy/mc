@@ -31,10 +31,20 @@ Bonus :
 1. Pricing model of milk products made more dynamic for subscriptions like yearly having concession over half yearly .
 2. Making the business logic of checking for milk product availability modular and pluggable.
 
-Coding Instructions :
+Expectations:
+Make sure that you have working and demonstrable code for all the above requirements.
+Feature requirements should be strictly followed. Work on the expected output first and then add good-to-have features of your own.
+Use of proper abstraction, separation of concerns is required.
+Code should easily accommodate new requirements with minimal changes.
+Proper exception handling is required.
+Code should be modular, readable and unit-testable.
 
-Use only in memory data structures to store the data and do not use any sql server or in memory data store.
-You can use internet in case of doubts.
+Important Notes: 
+Do not use any database store, use in-memory data structure. 
+Do not create any UI for the application.
+Do not build a Command line interface, Executing test cases or simple Main function should be sufficient
+Do not make any assumption, please ask it out.
+
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
