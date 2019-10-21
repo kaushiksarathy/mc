@@ -21,3 +21,28 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+
+/target
+/build
+/output
+/out
+*/target
+*/build
+*/output
+*/out
+.idea
+.project
+.svn
+*.iml
+*.ipr
+*.iws
+*.swp
+*.class
+*.out
+.DS_Store
+*.log
+upload.py
+lego-package/**/*.json
+*.bak
+bp
